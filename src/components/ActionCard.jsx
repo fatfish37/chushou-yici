@@ -24,7 +24,7 @@ export default function ActionCard({ items }) {
                 {copied === item.label ? "已复制" : "复制"}
               </button>
               <small>
-                复制不算发生。发出去、提交、投递或完成动作后，再点「已发生」。
+                复制不算发生。发出去、提交、投递或完成动作后，再点已发生。
               </small>
             </div>
           </div>

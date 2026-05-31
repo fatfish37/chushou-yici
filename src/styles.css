@@ -646,10 +646,13 @@ select:focus {
 
   .cardTop {
     align-items: flex-start;
+    flex-direction: column;
+    gap: 10px;
   }
 
   .copyArea {
     justify-content: flex-start;
+    width: 100%;
   }
 
   .copyArea small {
@@ -663,6 +666,12 @@ select:focus {
 
   .quickIdeaInput textarea {
     min-height: 82px;
+  }
+
+  .dataActions .dangerButton {
+    align-self: center;
+    min-height: 36px;
+    width: auto;
   }
 }
 
