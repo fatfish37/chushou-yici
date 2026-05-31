@@ -56,7 +56,7 @@ export default function DataPanel({ data, onImport, onClear }) {
       </div>
 
       <div className="dataActions">
-        <button className="secondaryButton" onClick={exportJson}>
+        <button className="primaryButton" onClick={exportJson}>
           导出 JSON
         </button>
         <button

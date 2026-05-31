@@ -19,9 +19,14 @@ export default function ActionCard({ items }) {
         <article className="actionCard" key={item.label}>
           <div className="cardTop">
             <h3>{item.label}</h3>
-            <button className="ghostButton" onClick={() => copyText(item)}>
-              {copied === item.label ? "已复制" : "复制"}
-            </button>
+            <div className="copyArea">
+              <button className="ghostButton" onClick={() => copyText(item)}>
+                {copied === item.label ? "已复制" : "复制"}
+              </button>
+              <small>
+                复制不算发生。发出去、提交、投递或完成动作后，再点「已发生」。
+              </small>
+            </div>
           </div>
           <p>{item.text}</p>
         </article>

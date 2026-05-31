@@ -95,11 +95,7 @@ function IdeaDetail({ idea, onStartRound, onUpdateIdeaStatus, onAddFeedback }) {
                 <span className="muted">{formatDateTime(round.createdAt)}</span>
               </div>
               <strong>
-                {round.resultStatus === "done"
-                  ? "已发生"
-                  : round.resultStatus === "not_done"
-                    ? "已降级"
-                    : "已生成行动卡"}
+                {round.resultStatus === "done" ? "已发生" : "还没发生"}
               </strong>
             </div>
 

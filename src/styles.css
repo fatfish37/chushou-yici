@@ -132,13 +132,21 @@ h3 {
 }
 
 .dangerButton {
-  border-color: #2a2a27;
-  background: #2a2a27;
+  border-color: transparent;
+  background: transparent;
+  color: #7a2d2d;
+  padding: 0 10px;
 }
 
 .dangerConfirm {
-  border-color: #111111;
-  background: #111111;
+  border-color: #7a2d2d;
+  background: #fff7f7;
+  color: #7a2d2d;
+}
+
+.dangerButton:hover {
+  border-color: #ead6d6;
+  background: #fff7f7;
 }
 
 .flowPanel,
@@ -186,6 +194,11 @@ h3 {
 
 .modeButton:hover {
   border-color: #111111;
+}
+
+.modeButtonActive {
+  border-color: #111111;
+  box-shadow: inset 0 -4px 0 #111111;
 }
 
 .modeButton span {
@@ -237,9 +250,18 @@ h3 {
 }
 
 .flowForm,
+.quickFlow,
 .feedbackForm {
   display: grid;
   gap: 18px;
+}
+
+.compactModeGrid {
+  gap: 10px;
+}
+
+.compactModeButton {
+  min-height: 132px;
 }
 
 .fieldBlock {
@@ -271,9 +293,13 @@ select {
 }
 
 textarea {
-  min-height: 96px;
+  min-height: 88px;
   resize: vertical;
   line-height: 1.6;
+}
+
+.quickIdeaInput textarea {
+  min-height: 84px;
 }
 
 input:focus,
@@ -317,6 +343,13 @@ select:focus {
   gap: 18px;
 }
 
+.resultButtonsTop {
+  padding: 12px;
+  border: 1px solid #c8c8c2;
+  border-radius: 8px;
+  background: #ffffff;
+}
+
 .doneBlock {
   border: 1px solid #c8c8c2;
   border-radius: 8px;
@@ -327,6 +360,7 @@ select:focus {
 .cardStack {
   display: grid;
   gap: 12px;
+  min-width: 0;
 }
 
 .actionCard,
@@ -335,6 +369,9 @@ select:focus {
   border-radius: 8px;
   padding: 18px;
   background: #ffffff;
+  min-width: 0;
+  max-width: 100%;
+  overflow-wrap: anywhere;
 }
 
 .cardTop {
@@ -343,6 +380,23 @@ select:focus {
   justify-content: space-between;
   gap: 16px;
   margin-bottom: 14px;
+  min-width: 0;
+}
+
+.copyArea {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 10px;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.copyArea small {
+  max-width: 360px;
+  color: #6d6d67;
+  font-size: 0.78rem;
+  line-height: 1.45;
+  text-align: right;
 }
 
 .actionCard p {
@@ -579,6 +633,37 @@ select:focus {
   .feedbackQuick {
     width: 100%;
   }
+
+  .dataActions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .modeButton,
+  .compactModeButton {
+    min-height: auto;
+  }
+
+  .cardTop {
+    align-items: flex-start;
+  }
+
+  .copyArea {
+    justify-content: flex-start;
+  }
+
+  .copyArea small {
+    max-width: none;
+    text-align: left;
+  }
+
+  textarea {
+    min-height: 78px;
+  }
+
+  .quickIdeaInput textarea {
+    min-height: 82px;
+  }
 }
 
 @media (max-width: 480px) {
@@ -597,6 +682,6 @@ select:focus {
   }
 
   .modeButton {
-    min-height: 150px;
+    min-height: 112px;
   }
 }

@@ -4,8 +4,8 @@ export const LOOP_STATUSES = {
     description: "你还在自己想。",
   },
   card: {
-    label: "已生成行动卡",
-    description: "你已经把想法压缩成可以进入现实世界的动作。",
+    label: "还没发生",
+    description: "你已经生成了行动卡，但它还没有进入现实世界。",
   },
   happened: {
     label: "已发生",
@@ -37,8 +37,7 @@ export const ACTION_MODES = {
     title: "发给一个人",
     minutes: 5,
     timerText: "这不是打磨话术的时间，只是发给一个人的时间。",
-    description:
-      "适合销售验证、合作推进、求职请教、方案反馈、产品试用、资源置换、约人沟通。",
+    description: "找人问一句、约一下、试探一下。",
     stuckReasons: [
       "我还想继续优化",
       "我不知道找谁",
@@ -74,8 +73,7 @@ export const ACTION_MODES = {
     title: "公开/提交一个动作",
     minutes: 15,
     timerText: "这不是做完整内容的时间，只是让它发布/提交的时间。",
-    description:
-      "适合发社交媒体、投递简历、提交方案、上传作品、发布表单、公开页面、上架链接、发布测试版工具。",
+    description: "发出去、投出去、交出去、上传出去。",
     stuckReasons: [
       "文案不够好",
       "标题不够好",
@@ -131,8 +129,7 @@ export const ACTION_MODES = {
     title: "去做一个现实动作",
     minutes: 10,
     timerText: "这不是准备充分的时间，只是完成第一步现实动作的时间。",
-    description:
-      "适合打电话、预约、去现场、下单样品、报名、打印、询价、交付、实地确认等动作。",
+    description: "打电话、预约、下单、去现场、问价格。",
     stuckReasons: [
       "觉得还没准备好",
       "怕麻烦",

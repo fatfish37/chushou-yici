@@ -8,6 +8,12 @@ function sentence(value, fallback) {
   return /[。！？?!]$/.test(text) ? text : `${text}。`;
 }
 
+function question(value, fallback) {
+  const text = clean(value || fallback);
+  if (!text) return fallback;
+  return /[。！？?!]$/.test(text) ? text : `${text}？`;
+}
+
 export function generateCard(mode, form) {
   if (mode === "person") {
     return generatePersonCard(form);
@@ -34,26 +40,56 @@ export function generateDowngradedAction(mode, form) {
 
 function generatePersonCard(form) {
   const idea = sentence(form.currentIdea, "这个想法");
-  const request = clean(form.minimumRequest) || "给一句真实反馈";
-  const person = clean(form.targetPerson);
-  const relation = clean(form.targetRelation);
-  const prefix = person ? `${person}，` : "";
-  const relationLine = relation ? `我想到你，是因为${sentence(relation)}` : "";
+  const request = normalizePersonRequest(form.minimumRequest);
 
   return [
     {
       label: "极短版",
-      text: `${prefix}我有个很粗的想法想请你帮我判断一句：${idea}这事你第一反应是值得继续吗？`,
+      text: `我有个很早期的想法想请你判断一句：${idea}这事你第一反应值得继续吗？`,
     },
     {
       label: "正常版",
-      text: `${prefix}我最近在想${idea}还没准备做完整方案，想先请你帮我${request}。不合适也可以直接说。${relationLine}`,
+      text: `我最近在想一个小方案：${idea}还没准备做完整版本，想先请你帮我判断一句：${request}不合适也可以直接说。`,
     },
     {
       label: "更礼貌版",
-      text: `${prefix}想请你帮我看一个很早期的想法：${idea}不用完整反馈，只想请你从你的角度帮我判断一下：${request}。如果现在不方便，直接忽略就好。`,
+      text: `想请你帮我看一个很早期的想法：${idea}暂时不用完整反馈，只想请你从你的角度判断一下：${request}`,
     },
   ];
+}
+
+function normalizePersonRequest(value) {
+  const request = clean(value);
+
+  if (!request || request.includes("值得继续")) {
+    return "这事你第一反应值得继续吗？";
+  }
+  if (request.includes("看一页")) {
+    return "你愿不愿意看一页简版思路？";
+  }
+  if (request.includes("约")) {
+    return "你是否方便约 20 分钟聊一下？";
+  }
+  if (request.includes("推荐")) {
+    return "你能不能推荐一个更合适的人？";
+  }
+  if (request.includes("反馈")) {
+    return "你第一反应是什么？";
+  }
+  if (request.includes("试用")) {
+    return "你愿不愿意试用一次？";
+  }
+  if (request.includes("不靠谱")) {
+    return "你觉得哪里最不靠谱？";
+  }
+  if (request.includes("报价") || request.includes("条件")) {
+    return "大概报价或条件是什么？";
+  }
+  if (request.includes("兴趣")) {
+    return "你有没有兴趣进入下一步？";
+  }
+
+  return question(request, "这事你第一反应值得继续吗？");
 }
 
 function generatePublishCard(form) {
